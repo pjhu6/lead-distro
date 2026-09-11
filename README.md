@@ -8,6 +8,8 @@ The service guarantees that as soon as a lead comes in, if there are eligible sa
 
 For demo purposes, we listen to an SSE stream to emulate real-time lead delivery from an agent perspective.
 
+![screenshot](assets/screenshot4.png)
+
 Note: for simplicity we will use a hardcoded set of 6 sales agents:
 ```bash
     (agent_id="agent_1", type="special", tier=1, region="US-East", language="EN"),
