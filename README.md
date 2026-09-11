@@ -52,7 +52,7 @@ curl -X POST "http://localhost:8000/lead" -H "Content-Type: application/json" -d
 curl -X POST http://localhost:8000/agent/agent_5/release
 ```
 
-4. As new leads come in or sales agents become available, we can see events stream in.
+4. As new leads come in or sales agents become available, we can see events stream in. These events reprsent a lead being delivered to a sales agent.
 ```bash
 C:\Users\Patrick>curl -N "http://localhost:8000/event/stream"
 data: b'{"event": "NEW_LEAD", "lead_id": "lead_15877d20", "agent_id": "agent_1"}'
