@@ -1,6 +1,6 @@
 [
   {
-    "description": "1. Send first special lead. Since agent_1 satisfies all criteria, we should see it matches in the event listener immediately.",
+    "description": "1. Send first lead with type='special'. Since agent_1 satisfies all criteria, we should see it matches in the event listener immediately.",
     "method": "POST",
     "endpoint": "/lead",
     "payload": {
@@ -11,7 +11,7 @@
     }
   },
   {
-    "description": "2. Send second special lead. Should see no immediate match as agent_1 is busy.",
+    "description": "2. Send second 'special' lead. Should see no immediate match as agent_1 is busy.",
     "method": "POST",
     "endpoint": "/lead",
     "payload": {
@@ -61,7 +61,18 @@
     }
   },
   {
-    "description": "7. Send another general, tier 1, US-East lead. Should match agent_5, as it has tier 3 >= 1.",
+    "description": "7. Send a general, tier 1, US-East lead but with 'KO' language. Expect no match since no agents speak Korean.",
+    "method": "POST",
+    "endpoint": "/lead",
+    "payload": {
+      "type": "general",
+      "language": "KO",
+      "region": "US-East",
+      "min_tier": 1
+    }
+  },
+  {
+    "description": "8. Send another general, tier 1, US-East lead, EN language. Should match agent_5, as it has tier 3 >= 1.",
     "method": "POST",
     "endpoint": "/lead",
     "payload": {
@@ -71,4 +82,5 @@
       "min_tier": 1
     }
   }
+  
 ]

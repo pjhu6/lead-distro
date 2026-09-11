@@ -16,12 +16,12 @@ async def lifespan(app: FastAPI):
     # Insert dummy sales agents to DB
     async with AsyncSessionLocal() as session:
         initial_agents = [
-            AgentCreate(agent_id="agent_1", type="special", tier=1, region="US-East"),
-            AgentCreate(agent_id="agent_2", type="pro", tier=2, region="US-West"),
-            AgentCreate(agent_id="agent_3", type="general", tier=1, region="US-West"),
-            AgentCreate(agent_id="agent_4", type="general", tier=1, region="US-East"),
-            AgentCreate(agent_id="agent_5", type="general", tier=3, region="US-East"),
-            AgentCreate(agent_id="agent_6", type="general", tier=3, region="US-Central"),
+            AgentCreate(agent_id="agent_1", type="special", tier=1, region="US-East", language="EN"),
+            AgentCreate(agent_id="agent_2", type="pro", tier=2, region="US-West", language="EN"),
+            AgentCreate(agent_id="agent_3", type="general", tier=1, region="US-West", language="EN"),
+            AgentCreate(agent_id="agent_4", type="general", tier=1, region="US-East", language="EN"),
+            AgentCreate(agent_id="agent_5", type="general", tier=3, region="US-East", language="EN"),
+            AgentCreate(agent_id="agent_6", type="general", tier=3, region="US-Central", language="EN"),
         ]
 
         for agent_data in initial_agents:
