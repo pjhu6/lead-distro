@@ -1,0 +1,74 @@
+[
+  {
+    "description": "1. Send first special lead. Since agent_1 satisfies all criteria, we should see it matches in the event listener immediately.",
+    "method": "POST",
+    "endpoint": "/lead",
+    "payload": {
+      "type": "special",
+      "language": "EN",
+      "region": "US-East",
+      "min_tier": 1
+    }
+  },
+  {
+    "description": "2. Send second special lead. Should see no immediate match as agent_1 is busy.",
+    "method": "POST",
+    "endpoint": "/lead",
+    "payload": {
+      "type": "special",
+      "language": "EN",
+      "region": "US-East",
+      "min_tier": 1
+    }
+  },
+  {
+    "description": "3. Release agent_1. Since there's a PENDING lead that matches, should get matches immediately.",
+    "method": "POST",
+    "endpoint": "/agent/agent_1/release",
+    "payload": null
+  },
+  {
+    "description": "4. Send third special lead. Agent 1 is busy again, so should see no match.",
+    "method": "POST",
+    "endpoint": "/lead",
+    "payload": {
+      "type": "special",
+      "language": "EN",
+      "region": "US-East",
+      "min_tier": 1
+    }
+  },
+  {
+    "description": "5. Send general, tier 1, US-East lead. Should match agent_4 immediately.",
+    "method": "POST",
+    "endpoint": "/lead",
+    "payload": {
+      "type": "general",
+      "language": "EN",
+      "region": "US-East",
+      "min_tier": 1
+    }
+  },
+  {
+    "description": "6. Send general tier 4, US-East, lead. Should not match as no agent has tier >= 4.",
+    "method": "POST",
+    "endpoint": "/lead",
+    "payload": {
+      "type": "general",
+      "language": "EN",
+      "region": "US-East",
+      "min_tier": 4
+    }
+  },
+  {
+    "description": "7. Send another general, tier 1, US-East lead. Should match agent_5, as it has tier 3 >= 1.",
+    "method": "POST",
+    "endpoint": "/lead",
+    "payload": {
+      "type": "general",
+      "language": "EN",
+      "region": "US-East",
+      "min_tier": 1
+    }
+  }
+]
